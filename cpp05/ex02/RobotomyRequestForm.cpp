@@ -13,8 +13,11 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other) : AFo
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &other)
 {
-	_target = other._target;
-	setIsSigned(other.getSign());
+	if (this != &other)
+	{
+		AForm::operator=(other);
+		_target = other._target;
+	}
 	return *this;
 }
 
@@ -24,14 +27,10 @@ void RobotomyRequestForm::performAction() const
 {
 	int randomNum;
 
+	std::cout << " Beeee Beeeeeeee Beeeeeeeeb " << std::endl;
 	randomNum = rand() % 2;
 	if (randomNum == 1)
-		std::cout << " Beeee Beeeeeeee Beeeeeeeeb " << _target << " has been robotomized successfully! " << std::endl;
+		std::cout << _target << " has been robotomized successfully! " << std::endl;
 	else
-		throw RobotizationFailed();
-}
-
-const char *RobotomyRequestForm::RobotizationFailed::what() const throw()
-{
-	return " Robotomy failed ";
+		std::cout << " the robotomy of " << _target << " failed " << std::endl;
 }

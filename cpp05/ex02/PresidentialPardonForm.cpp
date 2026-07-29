@@ -13,8 +13,11 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &oth
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &other)
 {
-    _target = other._target;
-    setIsSigned(other.getSign());
+    if (this != &other)
+    {
+        AForm::operator=(other);
+        _target = other._target;
+    }
     return *this;
 }
 

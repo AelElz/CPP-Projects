@@ -16,7 +16,8 @@ AForm::AForm(const AForm &other) : _name(other._name), _is_signed(other._is_sign
 
 AForm &AForm::operator=(const AForm &other)
 {
-	_is_signed = other._is_signed;
+	if (this != &other)
+		_is_signed = other._is_signed;
 	return *this;
 }
 
@@ -40,11 +41,6 @@ int AForm::getGrade() const
 int AForm::getExecuteGrade() const
 {
 	return _execute_grade;
-}
-
-void AForm::setIsSigned(bool is_signed)
-{
-	_is_signed = is_signed;
 }
 
 void AForm::beSigned(const Bureaucrat &bureaucrat)

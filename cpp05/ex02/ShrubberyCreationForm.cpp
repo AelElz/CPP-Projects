@@ -14,8 +14,11 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other)
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other)
 {
-	_target = other._target;
-	setIsSigned(other.getSign());
+	if (this != &other)
+	{
+		AForm::operator=(other);
+		_target = other._target;
+	}
 	return (*this);
 }
 

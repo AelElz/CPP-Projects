@@ -26,7 +26,6 @@ class AForm
 		bool getSign() const;
 		int getGrade() const;
 		int getExecuteGrade() const;
-		void setIsSigned(bool is_signed);
 		void beSigned(const Bureaucrat &bureaucrat);
 		void execute(Bureaucrat const &executor) const;
 

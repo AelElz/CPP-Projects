@@ -17,12 +17,6 @@ class RobotomyRequestForm : public AForm
 		RobotomyRequestForm(const RobotomyRequestForm &other);
 		RobotomyRequestForm &operator=(const RobotomyRequestForm &other);
 		~RobotomyRequestForm();
-
-		class RobotizationFailed : public std::exception
-		{
-			public:
-				virtual const char *what() const throw();
-		};
 };
 
 #endif
