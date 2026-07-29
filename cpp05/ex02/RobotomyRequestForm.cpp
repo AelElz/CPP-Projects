@@ -26,7 +26,7 @@ void RobotomyRequestForm::performAction() const
 
 	randomNum = rand() % 2;
 	if (randomNum == 1)
-		std::cout << " Beeee Beeeeeeee Beeeeeeeeb " << getName() << " has been robotomized successfully! " << std::endl;
+		std::cout << " Beeee Beeeeeeee Beeeeeeeeb " << _target << " has been robotomized successfully! " << std::endl;
 	else
 		throw RobotizationFailed();
 }
