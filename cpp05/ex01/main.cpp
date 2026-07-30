@@ -3,80 +3,71 @@
 
 int main()
 {
-    // 1. Create a form and show its initial state
-    std::cout << "--- 1. New form ---" << std::endl;
-    try
-    {
-        Form taxForm("Tax Form", 50, 40);
-        std::cout << taxForm << std::endl;
-    }
-    catch (std::exception &e)
-    {
-        std::cerr << "Error: " << e.what() << std::endl;
-    }
+	std::cout << "\033[33m" << "--- 1. Invalid grades ---" << "\033[0m" << std::endl;
+	try
+	{
+		Bureaucrat tooHigh("Bernd", 0);
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << "Exception caught: " << e.what() << std::endl;
+	}
+	try
+	{
+		Bureaucrat tooLow("Olaf", 151);
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << "Exception caught: " << e.what() << std::endl;
+	}
 
-    // 2. Invalid form grades
-    std::cout << std::endl << "--- 2. Invalid form grades ---" << std::endl;
-    try
-    {
-        Form bad("Bad Form", 0, 40);      // sign grade too high
-    }
-    catch (std::exception &e)
-    {
-        std::cerr << "Error: " << e.what() << std::endl;
-    }
-    try
-    {
-        Form bad("Bad Form", 50, 200);    // exec grade too low
-    }
-    catch (std::exception &e)
-    {
-        std::cerr << "Error: " << e.what() << std::endl;
-    }
+	std::cout << "\033[33m" << std::endl << "--- 2. Increment / decrement ---" << "\033[0m" << std::endl;
+	Bureaucrat bob("Bob", 2);
+	bob.incrementGrade();
+	std::cout << bob << std::endl;
+	try
+	{
+		bob.incrementGrade();
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << "Exception caught: " << e.what() << std::endl;
+	}
 
-    // 3. A weak bureaucrat fails to sign
-    std::cout << std::endl << "--- 3. Grade too low to sign ---" << std::endl;
-    try
-    {
-        Form taxForm("Tax Form", 50, 40);
-        Bureaucrat jim("Jim", 90);        // 90 is worse than 50
-        std::cout << jim << std::endl;
-        jim.signForm(taxForm);
-        std::cout << taxForm << std::endl;
-    }
-    catch (std::exception &e)
-    {
-        std::cerr << "Error: " << e.what() << std::endl;
-    }
+	std::cout << "\033[33m" << std::endl << "--- 3. Invalid form grades ---" << "\033[0m" << std::endl;
+	try
+	{
+		Form bad("Bad Form", 0, 40);
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << "Exception caught: " << e.what() << std::endl;
+	}
+	try
+	{
+		Form bad("Bad Form", 50, 200);
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << "Exception caught: " << e.what() << std::endl;
+	}
 
-    // 4. A strong bureaucrat signs successfully
-    std::cout << std::endl << "--- 4. Successful signing ---" << std::endl;
-    try
-    {
-        Form taxForm("Tax Form", 50, 40);
-        Bureaucrat ana("Ana", 30);        // 30 is better than 50
-        std::cout << ana << std::endl;
-        ana.signForm(taxForm);
-        std::cout << taxForm << std::endl;
-    }
-    catch (std::exception &e)
-    {
-        std::cerr << "Error: " << e.what() << std::endl;
-    }
+	std::cout << "\033[33m" << std::endl << "--- 4. Signing ---" << "\033[0m" << std::endl;
+	Form taxForm("Tax Form", 50, 40);
+	Bureaucrat jim("Jim", 90);
+	Bureaucrat ana("Ana", 30);
 
-    // 5. Exact match on the required grade
-    std::cout << std::endl << "--- 5. Exact grade match ---" << std::endl;
-    try
-    {
-        Form taxForm("Tax Form", 50, 40);
-        Bureaucrat sam("Sam", 50);        // exactly 50, should pass
-        sam.signForm(taxForm);
-        std::cout << taxForm << std::endl;
-    }
-    catch (std::exception &e)
-    {
-        std::cerr << "Error: " << e.what() << std::endl;
-    }
+	std::cout << taxForm;
+	jim.signForm(taxForm);
+	ana.signForm(taxForm);
+	std::cout << taxForm;
 
-    return 0;
+	std::cout << "\033[33m" << std::endl << "--- 5. Exact grade match ---" << "\033[0m" << std::endl;
+	Form otherForm("Other Form", 50, 40);
+	Bureaucrat sam("Sam", 50);
+
+	sam.signForm(otherForm);
+	std::cout << otherForm;
+
+	return (0);
 }
