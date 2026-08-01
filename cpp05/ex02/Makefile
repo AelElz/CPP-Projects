@@ -1,4 +1,4 @@
-NAME	= bureaucrat
+NAME	= ex02
 
 CXX		= c++
 CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
@@ -16,7 +16,7 @@ $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS) garden_shrubbery
+	rm -f $(OBJS) *_shrubbery
 
 fclean: clean
 	rm -f $(NAME)

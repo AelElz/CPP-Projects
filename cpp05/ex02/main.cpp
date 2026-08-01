@@ -11,7 +11,7 @@ int main()
 	std::cout << "\033[33m" << "--- 1. Invalid grades ---" << "\033[0m" << std::endl;
 	try
 	{
-		Bureaucrat tooHigh("Bernd", 0);
+		Bureaucrat tooHigh("Bro", 0);
 	}
 	catch (const std::exception &e)
 	{
@@ -19,7 +19,7 @@ int main()
 	}
 	try
 	{
-		Bureaucrat tooLow("Olaf", 151);
+		Bureaucrat tooLow("GGbro", 151);
 	}
 	catch (const std::exception &e)
 	{
@@ -40,8 +40,8 @@ int main()
 	}
 
 	std::cout << "\033[33m" << std::endl << "--- 3. Sign and execute ---" << "\033[0m" << std::endl;
-	Bureaucrat jim("Jim", 150);
-	Bureaucrat ana("Ana", 1);
+	Bureaucrat jim("Jim", 1);
+	Bureaucrat ana("Ana", 12);
 	ShrubberyCreationForm shrub("garden");
 
 	std::cout << shrub;
@@ -51,6 +51,7 @@ int main()
 	ana.executeForm(shrub);
 
 	std::cout << "\033[33m" << std::endl << "--- 4. Polymorphism ---" << "\033[0m" << std::endl;
+	srand(time(NULL));
 	RobotomyRequestForm robot("Bender");
 	PresidentialPardonForm pardon("Arthur");
 	AForm *forms[2] = {&robot, &pardon};
@@ -62,6 +63,4 @@ int main()
 		ana.executeForm(*forms[i]);
 		i++;
 	}
-
-	return (0);
 }
