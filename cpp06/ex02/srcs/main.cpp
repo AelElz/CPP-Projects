@@ -5,7 +5,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include <exception>   // <typeinfo> is forbidden by the subject
+#include <exception>
 
 Base	*generate(void)
 {
@@ -18,7 +18,6 @@ Base	*generate(void)
 	return (new C());
 }
 
-// pointer: dynamic_cast returns NULL when the type does not match
 void	identify(Base *p)
 {
 	if (dynamic_cast<A*>(p))
@@ -34,8 +33,6 @@ void	identify(Base *p)
 		std::cout << "C" << std::endl;
 	}
 }
-
-// reference: it can't be NULL, so a failed dynamic_cast throws instead
 void	identify(Base &p)
 {
 	try
