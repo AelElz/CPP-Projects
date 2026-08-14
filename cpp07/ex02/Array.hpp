@@ -32,5 +32,6 @@ class Array
 };
 
 #include "Array.tpp"
+#include "test.tpp"
 
 #endif
